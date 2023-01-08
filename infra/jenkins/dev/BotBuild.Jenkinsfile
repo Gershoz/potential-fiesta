@@ -21,7 +21,7 @@ pipeline
                 '''
             }
         }
-
+    }
 //         stage('Trigger Deploy') {
 //             steps {
 //                 build job: 'BotDeploy', wait: false, parameters: [
@@ -30,7 +30,6 @@ pipeline
 //             }
 //         }
 //     }
-}
 //         docker {
 //             // TODO build & push your Jenkins agent image, place the URL here
 //             image '<jenkins-agent-image>'
