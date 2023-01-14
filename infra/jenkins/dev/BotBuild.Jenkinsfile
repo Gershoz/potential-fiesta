@@ -27,14 +27,14 @@ pipeline
                 docker push $REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG
                 '''
             }
-        }
-        post 
-        {
-            always 
+            post 
             {
-                sh '''
-                   docker images | grep "gershoz_dev_bot_build" | awk '{print $1 ":" $2}' | xargs docker rmi
-                '''
+                always 
+                {
+                    sh '''
+                       docker images | grep "gershoz_dev_bot_build" | awk '{print $1 ":" $2}' | xargs docker rmi
+                    '''
+                }
             }
         }
         stage('Trigger Post List') 
