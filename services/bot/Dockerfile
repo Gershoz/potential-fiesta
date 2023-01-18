@@ -1,7 +1,8 @@
 FROM python:3.9-slim-bullseye
 WORKDIR /app
-ENV APP_PATH=services/bot
-COPY . .
-RUN pip install -r $APP_PATH/requirements.txt
+COPY requirements.txt .
 
+RUN pip install -r requirements.txt
+
+COPY . .
 CMD ["python3", "services/bot/app.py"]
