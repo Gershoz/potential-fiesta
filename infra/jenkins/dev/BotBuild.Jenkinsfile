@@ -6,7 +6,7 @@ pipeline
     REGISTRY_URL = "352708296901.dkr.ecr.eu-central-1.amazonaws.com"
     IMAGE_TAG = "0.0.$BUILD_NUMBER"
     IMAGE_NAME = "gershoz_dev_bot_build"
-    BOT_IMAGE_NAME = REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG
+    BOT_IMAGE_NAME = $REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG
     }
     stages
     {
@@ -27,7 +27,7 @@ pipeline
         stage('Trigger Deploy') {
             steps {
                 build job: 'BotDeploy', wait: false, parameters: [
-                    string(name: 'BOT_IMAGE_NAME', value: "$REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG")
+                    string(name: 'BOT_IMAGE_NAME', value: "$BOT_IMAGE_NAME")
                 ]
             }
         }
