@@ -1,11 +1,16 @@
 pipeline
 {
-    agent any
-    environment
+    agent {
+        docker {
+            // TODO build & push your Jenkins agent image, place the URL here
+            image '352708296901.dkr.ecr.eu-central-1.amazonaws.com/gershoz_jenkins_agent:latest'
+            args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
+        }
+    }    environment
     {
     REGISTRY_URL = "352708296901.dkr.ecr.eu-central-1.amazonaws.com"
     IMAGE_TAG = "0.0.$BUILD_NUMBER"
-    IMAGE_NAME = "gershoz_dev_bot_build"
+    IMAGE_NAME = "gershoz_dev_bot"
     }
     stages
     {
