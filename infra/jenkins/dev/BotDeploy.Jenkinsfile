@@ -6,7 +6,7 @@ pipeline {
     //         args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
     //     }
     // }
-
+    agent any
     environment {
         APP_ENV = "dev"
     }
