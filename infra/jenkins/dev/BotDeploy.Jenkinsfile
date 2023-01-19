@@ -30,6 +30,7 @@ pipeline {
                     bash common/replaceInFile.sh $K8S_CONFIGS/bot.yaml TELEGRAM_TOKEN $(echo -n $TELEGRAM_TOKEN | base64)
 
                     # apply the configurations to k8s cluster
+                    cat $K8S_CONFIGS/bot.yaml
                     kubectl apply --kubeconfig ${KUBECONFIG} -f $K8S_CONFIGS/bot.yaml
                     '''
                 }
