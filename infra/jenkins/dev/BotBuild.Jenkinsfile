@@ -17,9 +17,7 @@ pipeline
         stage('Build')
         {
             steps {
-                // TODO dev bot build stage                
                 sh '''
-                ls -l
                 aws ecr get-login-password --region eu-central-1 | docker login --username AWS --password-stdin $REGISTRY_URL
                 docker build -t $REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG . -f services/bot/Dockerfile
                 docker push $REGISTRY_URL/$IMAGE_NAME:$IMAGE_TAG
@@ -34,10 +32,4 @@ pipeline
             }
         }
     }
-//         docker {
-//             // TODO build & push your Jenkins agent image, place the URL here
-//             image '<jenkins-agent-image>'
-//             args  '--user root -v /var/run/docker.sock:/var/run/docker.sock'
-//         }
-//     }
 }
