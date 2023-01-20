@@ -69,7 +69,6 @@ class YoutubeObjectDetectBot(Bot):
 
 
 if __name__ == '__main__':
-    # '/app/secrets/.telegramToken'
     telegram_token_path = os.getenv('TELEGRAM-TOKEN-PATH', '~/.secrets/.telegramToken')
     config_json_path = os.getenv('CONFIG-JSON-PATH', './common/config.json')
 
