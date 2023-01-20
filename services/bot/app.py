@@ -3,7 +3,7 @@ import botocore
 from telegram.ext import Updater, MessageHandler, Filters
 from loguru import logger
 import boto3
-
+import os
 
 class Bot:
 
@@ -69,10 +69,14 @@ class YoutubeObjectDetectBot(Bot):
 
 
 if __name__ == '__main__':
-    with open('/home/ger/PycharmProjects/PolyBot/secrets/.telegramToken') as f:
+    # '/app/secrets/.telegramToken'
+    telegram_token_path = os.getenv('TELEGRAM-TOKEN-PATH', '~/.secrets/.telegramToken')
+    config_json_path = os.getenv('CONFIG-JSON-PATH', './common/config.json')
+
+    with open(telegram_token_path) as f:
         _token = f.read()
 
-    with open('/home/ger/PycharmProjects/PolyBot/common/config.json') as f:
+    with open(config_json_path) as f:
         config = json.load(f)
 
     sqs = boto3.resource('sqs', region_name=config.get('aws_region'))
