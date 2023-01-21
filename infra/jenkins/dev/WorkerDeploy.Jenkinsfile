@@ -19,7 +19,7 @@ pipeline {
         stage('Worker Deploy') {
             steps {
                 withCredentials([
-                    file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')
+                    file(credentialsId: 'kubernetes', variable: 'KUBECONFIG')
                 ]) {
                     sh '''
                     K8S_CONFIGS=infra/k8s
