@@ -3,7 +3,7 @@ import time
 import boto3
 import botocore
 from loguru import logger
-from common.utils import search_download_youtube_video
+from utils import search_download_youtube_video
 import os
 
 
@@ -41,7 +41,8 @@ def main():
 
 
 if __name__ == '__main__':
-    with open('/home/ger/PycharmProjects/PolyBot/common/config.json') as f:
+    config_json_path = os.getenv('CONFIG-JSON-PATH', './common/config.json')
+    with open(config_json_path) as f:
         config = json.load(f)
 
     sqs = boto3.resource('sqs', region_name=config.get('aws_region'))

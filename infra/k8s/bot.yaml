@@ -28,6 +28,9 @@ spec:
       containers:
         - name: bot-app-{{APP_ENV}}
           image: {{BOT_IMAGE}}
+          env:
+          - name: TELEGRAM-TOKEN-PATH
+            value: "/app/secrets/.telegramToken"     
           volumeMounts:
             - name: bot-token
               mountPath: "/app/secrets"
